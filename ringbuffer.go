@@ -1,7 +1,6 @@
 package atomicringbuffer
 
 import (
-	"fmt"
 	"sync/atomic"
 )
 
@@ -68,7 +67,7 @@ func (r *RingBuffer[T]) PopFront() (T, error) {
 
 	value := r.buffer[currStart]
 	r.start.Store(r.incrementIndex(currStart))
-	fmt.Println(r.buffer)
+
 	return value, nil
 }
 
