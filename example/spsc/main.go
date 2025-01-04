@@ -14,21 +14,21 @@ var wg sync.WaitGroup
 func Producer(rb *atomicringbuffer.RingBuffer[int]) {
 	defer wg.Done()
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 20; i++ {
 		_ = rb.PushBack(i)
-		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+		time.Sleep(time.Duration(rand.Intn(1e2)) * time.Millisecond)
 	}
 }
 
 func Consumer(rb *atomicringbuffer.RingBuffer[int]) {
 	defer wg.Done()
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 20; i++ {
 		value, err := rb.PopFront()
 		if err == nil {
 			fmt.Println(value)
 		}
-		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+		time.Sleep(time.Duration(rand.Intn(1e2)) * time.Millisecond)
 	}
 }
 
