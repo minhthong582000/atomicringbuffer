@@ -9,8 +9,8 @@ func BenchmarkRingBuffer(b *testing.B) {
 	r := NewRingBuffer[int](uint64(b.N))
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		r.PushBack(i)
-		r.PopFront()
+		_ = r.PushBack(i)
+		_, _ = r.PopFront()
 	}
 }
 
@@ -24,7 +24,7 @@ func BenchmarkRingBufferSingleProducerSingleConsumer(b *testing.B) {
 		defer wg.Done()
 
 		for i := 0; i < b.N; i++ {
-			r.PushBack(i)
+			_ = r.PushBack(i)
 		}
 	}()
 
@@ -33,7 +33,7 @@ func BenchmarkRingBufferSingleProducerSingleConsumer(b *testing.B) {
 		defer wg.Done()
 
 		for i := 0; i < b.N; i++ {
-			r.PopFront()
+			_, _ = r.PopFront()
 		}
 	}()
 
