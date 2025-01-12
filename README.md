@@ -48,6 +48,10 @@ A simple example of lock-free single producer, single consumer:
 go run example/spsc/main.go
 ```
 
+## Contributing
+
+Feel free to fork or clone this repository, explore the code, and contribute by submitting pull requests. Contributions, whether they’re bug fixes, improvements, or new features, are always welcome!
+
 ## License
 
 Distributed under the GPLv3 License. See `LICENSE.md` file for more information.
